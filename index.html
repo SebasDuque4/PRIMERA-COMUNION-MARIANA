@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#FBF5EF">
+  <title>Mi Primera Comunión · Mariana</title>
+  <meta name="description" content="Mariana te invita a celebrar su Primera Comunión · Domingo 6 de diciembre de 2026">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Pinyon+Script&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="locked">
+
+  <!-- ══ ICONOS REUTILIZABLES ══ -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <!-- Cáliz con hostia radiante -->
+      <symbol id="i-chalice" viewBox="0 0 120 140">
+        <g class="rays" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".8">
+          <line x1="60" y1="2" x2="60" y2="12" />
+          <line x1="35" y1="10" x2="40" y2="18" />
+          <line x1="85" y1="10" x2="80" y2="18" />
+          <line x1="18" y1="28" x2="27" y2="32" />
+          <line x1="102" y1="28" x2="93" y2="32" />
+          <line x1="14" y1="48" x2="24" y2="48" />
+          <line x1="106" y1="48" x2="96" y2="48" />
+        </g>
+        <circle cx="60" cy="40" r="17" fill="#fff" stroke="currentColor" stroke-width="1.8" />
+        <circle cx="60" cy="40" r="13" fill="none" stroke="currentColor" stroke-width=".8" opacity=".6" />
+        <path d="M60 31v18M53 37h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        <path d="M28 60h64c0 24-14 38-32 38S28 84 28 60z" fill="#fff" stroke="currentColor" stroke-width="1.8"
+          stroke-linejoin="round" />
+        <path d="M34 66h52" stroke="currentColor" stroke-width=".9" opacity=".6" />
+        <path d="M56 98v8M64 98v8" stroke="currentColor" stroke-width="1.8" />
+        <ellipse cx="60" cy="109" rx="8" ry="3.5" fill="#fff" stroke="currentColor" stroke-width="1.6" />
+        <path d="M57 112v8M63 112v8" stroke="currentColor" stroke-width="1.8" />
+        <path d="M38 132c3-9 41-9 44 0z" fill="#fff" stroke="currentColor" stroke-width="1.8"
+          stroke-linejoin="round" />
+        <path d="M34 134h52" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+      </symbol>
+      <!-- Cruz -->
+      <symbol id="i-cross" viewBox="0 0 16 22">
+        <path d="M8 1v20M2 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none" />
+      </symbol>
+      <!-- Iglesia -->
+      <symbol id="i-church" viewBox="0 0 64 64">
+        <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M32 4v10M27 8h10" />
+          <path d="M20 26l12-12 12 12" />
+          <path d="M22 24v34h20V24" />
+          <path d="M8 58V36l14-8M56 58V36l-14-8" />
+          <path d="M28 58V46a4 4 0 018 0v12" />
+          <circle cx="32" cy="33" r="3.5" />
+          <path d="M4 58h56" />
+        </g>
+      </symbol>
+      <!-- Celebración / pastel -->
+      <symbol id="i-cake" viewBox="0 0 64 64">
+        <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M32 6c-2 3-2 5 0 7 2-2 2-4 0-7z" />
+          <path d="M32 13v7" />
+          <rect x="18" y="20" width="28" height="12" rx="3" />
+          <rect x="10" y="32" width="44" height="16" rx="3" />
+          <path d="M10 39c4 3 7 3 11 0s7-3 11 0 7 3 11 0 7-3 11 0" />
+          <path d="M6 54h52" />
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- FONDOS -->
+  <div class="watercolor-layer watercolor-1"></div>
+  <div class="watercolor-layer watercolor-2"></div>
+  <div class="watercolor-layer watercolor-3"></div>
+
+  <!-- ══ LOADER ══ -->
+  <div id="loader">
+    <div class="loader-content">Mariana</div>
+  </div>
+
+  <!-- ══ SOBRE DE ENTRADA ══ -->
+  <div id="overlay" role="button" tabindex="0" aria-label="Abrir la invitación de Mariana">
+    <div class="ov-frame"></div>
+    <img src="images/florals/peony-white.png" alt="" class="ov-floral tl">
+    <img src="images/florals/peony-white.png" alt="" class="ov-floral br">
+
+    <div class="ov-inner">
+      <div class="ov-text">
+        <span class="overlay-pre">TIENES UNA INVITACIÓN</span>
+        <h1 class="overlay-name">Mariana</h1>
+        <span class="overlay-sub">Mi Primera Comunión</span>
+      </div>
+
+      <div class="envelope" aria-hidden="true">
+        <div class="env-back"></div>
+        <div class="env-card">
+          <svg class="chalice" viewBox="0 0 120 140"><use href="#i-chalice" /></svg>
+          <span>MI PRIMERA COMUNIÓN</span>
+        </div>
+        <div class="env-front"><i class="l"></i><i class="r"></i><i class="b"></i></div>
+        <div class="env-flap"></div>
+        <div class="seal"><span>M</span></div>
+      </div>
+
+      <div class="ov-text">
+        <span class="overlay-date">DOMINGO · 6 DE DICIEMBRE · 2026</span>
+        <span class="overlay-cta">TOCA PARA ABRIR</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ REPRODUCTOR ══ -->
+  <div id="player">
+    <div class="vinyl" id="vinyl"></div>
+    <div class="p-info">
+      <span class="p-title" id="p-title">COMUNIÓN</span>
+      <span class="p-artist" id="p-artist">Verónica Sanfilippo</span>
+    </div>
+    <div class="waves off" id="waves">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <button class="p-btn" id="p-btn" type="button" aria-label="Reproducir / Pausar">▶</button>
+  </div>
+
+  <audio id="bg-audio" loop preload="auto">
+    <source src="music/song.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- ══ HERO ══ -->
+  <header class="hero">
+    <div class="hero-glow"></div>
+    <img src="images/florals/peony-white.png" alt="" class="hero-floral tl">
+    <img src="images/florals/peony-white.png" alt="" class="hero-floral br">
+
+    <div class="hero-content">
+      <svg class="chalice" viewBox="0 0 120 140" aria-hidden="true"><use href="#i-chalice" /></svg>
+      <div class="hero-subtitle">MI PRIMERA COMUNIÓN</div>
+      <h1 class="hero-title">Mariana</h1>
+      <p class="hero-lead">Con mucha alegría recibiré a Jesús por primera vez en mi corazón</p>
+
+      <div class="hero-date">
+        <span class="side">DOMINGO</span>
+        <span>
+          <span class="day">06</span>
+          <span class="year">2026</span>
+        </span>
+        <span class="side">DICIEMBRE</span>
+      </div>
+    </div>
+    <a href="#mensaje" class="scroll-indicator" aria-label="Bajar">↓</a>
+  </header>
+
+  <!-- ══ CITA BÍBLICA ══ -->
+  <section class="section-quote reveal">
+    <div class="quote-inner">
+      <div class="divider"><svg><use href="#i-cross" /></svg></div>
+      <blockquote class="quote-text">
+        “Yo soy el pan de vida. El que viene a mí nunca tendrá hambre.”
+      </blockquote>
+      <cite class="quote-ref">JUAN 6, 35</cite>
+    </div>
+  </section>
+
+  <main>
+    <!-- ══ MENSAJE DE MARIANA ══ -->
+    <section id="mensaje" class="section reveal" style="padding-top:0">
+      <div class="container">
+        <div class="card message-card">
+          <span class="eyebrow">Una invitación especial</span>
+          <p>Ha llegado un día muy importante para mí: voy a recibir a Jesús en la Eucaristía por primera vez.</p>
+          <p style="margin-top:.8em">Me haría muy feliz que me acompañes con tu cariño y tus oraciones.</p>
+          <div class="signature">Mariana</div>
+          <div class="parents">
+            <span>CON LA BENDICIÓN DE MIS PADRES</span>
+            <strong>Alejandro Zuluaga &amp; Carolina Ramírez</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CUENTA REGRESIVA ══ -->
+    <section id="countdown" class="section reveal">
+      <div class="container">
+        <span class="eyebrow">Ya casi llega</span>
+        <h2 class="section-title">Cuenta Regresiva</h2>
+        <div class="divider"><svg><use href="#i-cross" /></svg></div>
+        <div class="countdown" id="countdown-grid">
+          <div class="count-card"><span id="days">00</span><small>DÍAS</small></div>
+          <div class="count-card"><span id="hours">00</span><small>HORAS</small></div>
+          <div class="count-card"><span id="minutes">00</span><small>MIN</small></div>
+          <div class="count-card"><span id="seconds">00</span><small>SEG</small></div>
+        </div>
+        <div class="countdown-done">¡Hoy es el gran día!</div>
+      </div>
+    </section>
+
+    <!-- ══ RESERVA LA FECHA ══ -->
+    <section id="fecha" class="section reveal">
+      <div class="container">
+        <span class="eyebrow">Save the date</span>
+        <h2 class="section-title">Reserva el Día</h2>
+        <div class="divider"><svg><use href="#i-cross" /></svg></div>
+        <div class="card save-card">
+          <div class="save-date">Domingo · 6 · Diciembre · 2026</div>
+          <div class="badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
+            HORA POR CONFIRMAR
+          </div>
+          <p>Te pedimos reservar <strong>todo el día</strong> para acompañarnos.
+            Muy pronto te compartiremos la hora y el lugar exactos de la ceremonia y la celebración.</p>
+
+          <div class="cal-btn-wrap">
+            <button class="btn btn-solid" id="cal-toggle" type="button" aria-expanded="false">
+              Añadir al calendario
+            </button>
+            <div class="cal-dropdown" id="cal-dropdown">
+              <button class="cal-opt" id="cal-google" type="button">Google Calendar</button>
+              <button class="cal-opt" id="cal-apple" type="button">Apple Calendar</button>
+              <button class="cal-opt" id="cal-outlook" type="button">Outlook / ICS</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CELEBRACIÓN ══ -->
+    <section id="eventos" class="section reveal">
+      <div class="container">
+        <span class="eyebrow">Así será el día</span>
+        <h2 class="section-title">La Celebración</h2>
+        <div class="divider"><svg><use href="#i-cross" /></svg></div>
+        <div class="event-grid">
+          <div class="card event-card">
+            <div class="event-icon"><svg><use href="#i-church" /></svg></div>
+            <h3>Santa Misa</h3>
+            <p>Celebración Eucarística de mi Primera Comunión</p>
+            <p><em>Parroquia por confirmar</em></p>
+            <span class="tbd">HORA POR CONFIRMAR</span><br>
+            <a href="#" class="btn" data-map="misa" hidden>Ver ubicación</a>
+          </div>
+          <div class="card event-card">
+            <div class="event-icon"><svg><use href="#i-cake" /></svg></div>
+            <h3>Celebración</h3>
+            <p>Después de la misa compartiremos en familia</p>
+            <p><strong>Casa Aurora</strong></p>
+            <span class="tbd">HORA POR CONFIRMAR</span><br>
+            <a href="#" class="btn" data-map="fiesta" hidden>Cómo llegar</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ GALERÍA ══ -->
+    <section id="galeria" class="section reveal">
+      <div class="container">
+        <span class="eyebrow">Creciendo en la fe</span>
+        <h2 class="section-title">Momentos de Mariana</h2>
+        <div class="divider"><svg><use href="#i-cross" /></svg></div>
+        <p class="section-description">Desde el día de mi Bautismo, Dios ha guiado cada uno de mis pasos.
+          Hoy doy un paso más en este camino lleno de amor.</p>
+        <!-- Coloca las fotos en images/mariana/ con estos nombres -->
+        <div class="masonry-gallery">
+          <div class="gallery-item tall"><img src="images/mariana/foto-1.jpg" alt="Mariana"></div>
+          <div class="gallery-item"><img src="images/mariana/foto-2.jpg" alt="Mariana"></div>
+          <div class="gallery-item"><img src="images/mariana/foto-3.jpg" alt="Mariana"></div>
+          <div class="gallery-item wide"><img src="images/mariana/foto-4.jpg" alt="Mariana"></div>
+          <div class="gallery-item"><img src="images/mariana/foto-5.jpg" alt="Mariana"></div>
+          <div class="gallery-item tall"><img src="images/mariana/foto-6.jpg" alt="Mariana"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ ÁLBUM COMPARTIDO (se muestra solo si está configurado en js/app.js) ══ -->
+    <section id="album" class="section reveal" hidden>
+      <div class="container">
+        <span class="eyebrow">Comparte tus recuerdos</span>
+        <h2 class="section-title">Álbum de Fotos</h2>
+        <div class="divider"><svg><use href="#i-cross" /></svg></div>
+        <p class="section-description">¡Sube las fotos que tomes durante el día y guardemos juntos estos recuerdos!</p>
+
+        <div class="album-wrap">
+          <div class="upload-zone" id="upload-zone">
+            <label for="photo-input">
+              <svg width="44" height="44" fill="none" viewBox="0 0 24 24" stroke="var(--rose-deep)"
+                stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                <polyline points="17 8 12 3 7 8" />
+                <line x1="12" y1="3" x2="12" y2="15" />
+              </svg>
+              <p class="upload-title">SUBIR FOTOS</p>
+              <span class="upload-hint">Arrastra aquí o toca para seleccionar · Varias fotos a la vez</span>
+              <span class="btn">Seleccionar fotos</span>
+            </label>
+            <input type="file" id="photo-input" accept="image/*" multiple hidden>
+          </div>
+
+          <div class="upload-list" id="upload-list"></div>
+
+          <div class="album-gallery-header">
+            <span class="album-gallery-label">FOTOS SUBIDAS</span>
+            <button class="gallery-reload" id="gallery-reload" type="button">↺ Actualizar</button>
+          </div>
+          <iframe class="drive-gallery-frame" id="gallery-frame" height="460" frameborder="0" allowfullscreen
+            loading="lazy" title="Álbum de la Primera Comunión"></iframe>
+          <p class="drive-gallery-note">Las fotos tardan unos segundos en aparecer · Toca “Actualizar” para ver las
+            nuevas</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ REGALOS ══ -->
+    <section id="regalos" class="section reveal">
+      <div class="container">
+        <div class="card dress-card">
+          <svg class="gift-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+            <rect x="8" y="22" width="48" height="34" rx="3" />
+            <path d="M8 24l24 16 24-16" />
+            <path d="M32 20c-3-6-12-6-12 0 0 4 6 6 12 0zM32 20c3-6 12-6 12 0 0 4-6 6-12 0z" />
+          </svg>
+          <h3 class="dress-phrase">Tu presencia es mi mejor regalo</h3>
+          <p class="section-description">Si además deseas tener un detalle conmigo, habrá una cajita para sobres
+            el día de la celebración.</p>
+          <a href="#" id="btn-transferencia" class="btn" hidden>Ver datos para transferencia</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CONFIRMAR ASISTENCIA ══ -->
+    <section id="rsvp" class="section reveal">
+      <div class="container">
+        <div class="card rsvp-card">
+          <span class="eyebrow">RSVP</span>
+          <h2 class="section-title">Confirma tu asistencia</h2>
+          <p>Me encantaría saber si podrás acompañarme.<br>Por favor confirma antes del <strong
+              id="rsvp-deadline">29 de noviembre</strong>.</p>
+
+          <form class="rsvp-form" id="rsvp-form" novalidate>
+            <div class="attend-group">
+              <label class="attend-opt">
+                <input type="radio" name="attend" value="si" required>
+                <span>¡Sí, allí estaré! ♡</span>
+              </label>
+              <label class="attend-opt">
+                <input type="radio" name="attend" value="no">
+                <span>No podré asistir</span>
+              </label>
+            </div>
+
+            <input type="text" id="rsvp-name" placeholder="Nombre completo" required autocomplete="name">
+            <select id="rsvp-count" aria-label="Número de asistentes">
+              <option value="1">Solo yo</option>
+              <option value="2">2 personas</option>
+              <option value="3">3 personas</option>
+              <option value="4">4 personas</option>
+              <option value="5+">5 o más personas</option>
+            </select>
+            <input type="text" id="rsvp-kids" placeholder="N.º de niños (opcional)">
+            <textarea id="rsvp-msg" placeholder="Un mensaje o una bendición para Mariana"></textarea>
+
+            <button type="submit" class="btn btn-solid" id="rsvp-submit">Confirmar</button>
+            <div class="form-msg" id="form-msg" role="status"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <svg class="chalice" viewBox="0 0 120 140" aria-hidden="true"><use href="#i-chalice" /></svg>
+    <h2>Mariana</h2>
+    <p>Gracias por acompañarme en este día tan especial.<br>¡Que Dios te bendiga!</p>
+    <span class="footer-date">06 · XII · MMXXVI</span>
+  </footer>
+
+  <!-- ══ MODAL TRANSFERENCIA ══ -->
+  <div id="modal-transferencia" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-content">
+      <button class="modal-close" id="close-modal" type="button" aria-label="Cerrar">&times;</button>
+      <h3 class="modal-title" id="modal-title">Datos para transferencia</h3>
+      <div class="divider"><svg><use href="#i-cross" /></svg></div>
+      <p class="modal-desc" id="modal-bank"></p>
+      <p class="modal-account" id="modal-account"></p>
+      <p class="modal-holder" id="modal-holder"></p>
+      <button class="btn" id="copy-bank" type="button">Copiar número</button>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+
+</html>
