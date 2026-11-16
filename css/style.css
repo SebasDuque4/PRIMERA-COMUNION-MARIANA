@@ -697,6 +697,9 @@ strong { font-weight: 700; color: var(--ink); }
 }
 .event-card p { line-height: 1.6; }
 .event-card em { color: var(--muted); }
+.event-card .venue { margin-top: 10px; color: var(--muted); }
+.event-card .venue strong { font-size: 1.3rem; }
+.event-card .btn { margin-top: 4px; }
 .event-card .tbd {
   display: inline-block;
   margin: 14px 0 22px;
@@ -717,6 +720,7 @@ strong { font-weight: 700; color: var(--ink); }
   grid-auto-rows: 220px;
   gap: 16px;
   margin-top: 50px;
+  grid-auto-flow: dense;
 }
 .gallery-item {
   position: relative;
@@ -727,7 +731,7 @@ strong { font-weight: 700; color: var(--ink); }
 }
 .gallery-item.tall { grid-row: span 2; }
 .gallery-item.wide { grid-column: span 2; }
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s ease; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; transition: transform 1s ease; }
 .gallery-item:hover img { transform: scale(1.05); }
 .gallery-item.empty img { display: none; }
 .gallery-item.empty::after {
@@ -939,6 +943,7 @@ strong { font-weight: 700; color: var(--ink); }
   .section { padding: 72px 0; }
   .event-grid { grid-template-columns: 1fr; }
   .masonry-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 170px; gap: 12px; }
+  .gallery-item.wide-sm { grid-column: span 2; }
   .message-card, .save-card, .dress-card, .rsvp-card { padding: 42px 22px; }
   .hero-floral.tl { left: -80px; top: -40px; }
   .hero-floral.br { right: -80px; bottom: 30px; }

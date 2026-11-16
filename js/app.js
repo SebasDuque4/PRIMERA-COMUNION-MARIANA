@@ -6,7 +6,7 @@ const CONFIG = {
   fecha: '2026-12-06',
 
   // Cuando se confirme la hora y el lugar, escríbelos aquí y se mostrarán en el calendario
-  lugar: 'Por confirmar',
+  lugar: 'Iglesia Reina de la Paz, El Carmen de Viboral, Antioquia',
 
   // Google Apps Script NUEVO para esta comunión (RSVP + subida de fotos).
   // Déjalo vacío hasta crearlo: el álbum se oculta y el RSVP usa WhatsApp.
@@ -19,7 +19,10 @@ const CONFIG = {
   whatsapp: '',
 
   // Enlaces de Google Maps (déjalos vacíos mientras no haya lugar)
-  mapas: { misa: '', fiesta: '' },
+  mapas: {
+    misa:   'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('Iglesia Reina de la Paz, El Carmen de Viboral, Antioquia'),
+    fiesta: 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('Casa Aurora, Vereda Camargo, El Carmen de Viboral, Antioquia'),
+  },
 
   // Datos bancarios (si están vacíos, el botón de transferencia no aparece)
   banco: { nombre: '', cuenta: '', titular: '' },
@@ -117,7 +120,7 @@ const ymd = d => `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`
 const EVT = {
   title:    'Primera Comunión de Mariana',
   location: CONFIG.lugar,
-  desc:     'Reserva todo el día para acompañar a Mariana en su Primera Comunión. Celebración en Casa Aurora. Hora por confirmar.',
+  desc:     'Reserva todo el día para acompañar a Mariana en su Primera Comunión. Misa: Iglesia Reina de la Paz, El Carmen de Viboral. Celebración: Casa Aurora, vereda Camargo, El Carmen de Viboral. Hora por confirmar.',
   start:    ymd(EVENT_START),
   end:      ymd(EVENT_END),
 };
