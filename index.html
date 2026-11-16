@@ -209,16 +209,13 @@
         <div class="divider"><svg><use href="#i-cross" /></svg></div>
         <div class="card save-card">
           <div class="save-date">Domingo · 6 · Diciembre · 2026</div>
-          <div class="badge">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
-            HORA POR CONFIRMAR
-          </div>
-          <p>Te pedimos reservar <strong>todo el día</strong> para acompañarnos.
-            Muy pronto te compartiremos la hora exacta de la ceremonia y de la celebración.</p>
+          <p class="save-text">Te pedimos reservar <strong>todo el día</strong> para acompañarme.
+            Confírmame tu asistencia y te enviaremos por WhatsApp todos los detalles.</p>
 
+          <div class="save-actions">
+          <a href="#rsvp" class="btn btn-solid">Confirmar asistencia</a>
           <div class="cal-btn-wrap">
-            <button class="btn btn-solid" id="cal-toggle" type="button" aria-expanded="false">
+            <button class="btn" id="cal-toggle" type="button" aria-expanded="false">
               Añadir al calendario
             </button>
             <div class="cal-dropdown" id="cal-dropdown">
@@ -226,6 +223,7 @@
               <button class="cal-opt" id="cal-apple" type="button">Apple Calendar</button>
               <button class="cal-opt" id="cal-outlook" type="button">Outlook / ICS</button>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -243,7 +241,6 @@
             <h3>Santa Misa</h3>
             <p>Celebración eucarística de mi Primera Comunión</p>
             <p class="venue"><strong>Iglesia Reina de la Paz</strong><br>El Carmen de Viboral, Antioquia</p>
-            <span class="tbd">HORA POR CONFIRMAR</span><br>
             <a href="#" class="btn" data-map="misa" hidden>Ver ubicación</a>
           </div>
           <div class="card event-card">
@@ -251,7 +248,6 @@
             <h3>Celebración</h3>
             <p>Después de la misa compartiremos en familia</p>
             <p class="venue"><strong>Casa Aurora</strong><br>Vereda Camargo, El Carmen de Viboral</p>
-            <span class="tbd">HORA POR CONFIRMAR</span><br>
             <a href="#" class="btn" data-map="fiesta" hidden>Cómo llegar</a>
           </div>
         </div>
@@ -340,8 +336,8 @@
         <div class="card rsvp-card">
           <span class="eyebrow">RSVP</span>
           <h2 class="section-title">Confirma tu asistencia</h2>
-          <p>Me encantaría saber si podrás acompañarme.<br>Por favor confirma antes del <strong
-              id="rsvp-deadline">29 de noviembre</strong>.</p>
+          <p>Me encantaría saber si podrás acompañarme en este día tan especial.</p>
+          <p class="rsvp-deadline">Por favor confirma antes del <strong id="rsvp-deadline">29 de noviembre</strong>.</p>
 
           <form class="rsvp-form" id="rsvp-form" novalidate>
             <div class="attend-group">
@@ -356,6 +352,7 @@
             </div>
 
             <input type="text" id="rsvp-name" placeholder="Nombre completo" required autocomplete="name">
+            <div class="attend-only">
             <select id="rsvp-count" aria-label="Número de asistentes">
               <option value="1">Solo yo</option>
               <option value="2">2 personas</option>
@@ -363,7 +360,8 @@
               <option value="4">4 personas</option>
               <option value="5+">5 o más personas</option>
             </select>
-            <input type="text" id="rsvp-kids" placeholder="N.º de niños (opcional)">
+            <input type="text" id="rsvp-kids" placeholder="N.º de niños (opcional)" inputmode="numeric">
+            </div>
             <textarea id="rsvp-msg" placeholder="Un mensaje o una bendición para Mariana"></textarea>
 
             <button type="submit" class="btn btn-solid" id="rsvp-submit">Confirmar</button>

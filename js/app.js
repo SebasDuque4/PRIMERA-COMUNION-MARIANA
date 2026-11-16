@@ -5,12 +5,12 @@ const CONFIG = {
   // Fecha del evento (día completo, sin hora exacta). Formato AAAA-MM-DD
   fecha: '2026-12-06',
 
-  // Cuando se confirme la hora y el lugar, escríbelos aquí y se mostrarán en el calendario
+  // Lugar que aparece en el evento del calendario
   lugar: 'Iglesia Reina de la Paz, El Carmen de Viboral, Antioquia',
 
-  // Google Apps Script NUEVO para esta comunión (RSVP + subida de fotos).
-  // Déjalo vacío hasta crearlo: el álbum se oculta y el RSVP usa WhatsApp.
-  appsScriptUrl: '',
+  // URL de la aplicación web de Google Apps Script (termina en /exec).
+  // Las confirmaciones se guardan en la hoja de Google Sheets. Ver google-apps-script/Code.gs
+  appsScriptUrl: 'https://script.google.com/macros/s/AKfycbwjXMEHm9dG6W01YUcISUt9nUhhpMX90blx1E5gFjMURVFTbcz-YDuysKsGocy59OKkyQ/exec',
 
   // ID de la carpeta de Google Drive donde quedan las fotos del álbum
   driveFolderId: '',
@@ -120,7 +120,7 @@ const ymd = d => `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`
 const EVT = {
   title:    'Primera Comunión de Mariana',
   location: CONFIG.lugar,
-  desc:     'Reserva todo el día para acompañar a Mariana en su Primera Comunión. Misa: Iglesia Reina de la Paz, El Carmen de Viboral. Celebración: Casa Aurora, vereda Camargo, El Carmen de Viboral. Hora por confirmar.',
+  desc:     'Reserva todo el día para acompañar a Mariana en su Primera Comunión. Misa: Iglesia Reina de la Paz, El Carmen de Viboral. Celebración: Casa Aurora, vereda Camargo, El Carmen de Viboral. Te enviaremos los detalles por WhatsApp.',
   start:    ymd(EVENT_START),
   end:      ymd(EVENT_END),
 };
@@ -254,6 +254,14 @@ const form    = document.getElementById('rsvp-form');
 const formMsg = document.getElementById('form-msg');
 const submit  = document.getElementById('rsvp-submit');
 
+// Si no asiste, no hace falta pedir personas ni niños
+const attendOnly = document.querySelector('.attend-only');
+function toggleAttendFields() {
+  const v = form.querySelector('input[name=attend]:checked')?.value;
+  attendOnly.classList.toggle('is-hidden', v === 'no');
+}
+form.querySelectorAll('input[name=attend]').forEach(r => r.addEventListener('change', toggleAttendFields));
+
 function showFormMsg(text, type) {
   formMsg.textContent = text;
   formMsg.className   = 'form-msg ' + type;
@@ -266,15 +274,18 @@ form.addEventListener('submit', async e => {
   if (!attend) { showFormMsg('Cuéntame si podrás asistir.', 'err'); return; }
   if (!name)   { showFormMsg('Por favor escribe tu nombre.', 'err'); return; }
 
+  const yes  = attend === 'si';
   const data = {
+    type: 'rsvp',
     attend, name,
-    count: document.getElementById('rsvp-count').value,
-    kids:  document.getElementById('rsvp-kids').value.trim(),
+    count: yes ? document.getElementById('rsvp-count').value : '0',
+    kids:  yes ? document.getElementById('rsvp-kids').value.trim() : '',
     msg:   document.getElementById('rsvp-msg').value.trim(),
   };
   const thanks = attend === 'si'
     ? `¡Gracias ${name}! Me alegra mucho que me acompañes. ♡`
     : `Gracias ${name} por avisarme. ¡Te tendré en mis oraciones!`;
+  const thanksFull = attend === 'si' ? `${thanks} Pronto te escribiremos por WhatsApp con todos los detalles.` : thanks;
 
   // Opción A: Google Apps Script
   if (CONFIG.appsScriptUrl) {
@@ -283,8 +294,9 @@ form.addEventListener('submit', async e => {
     try {
       await fetch(CONFIG.appsScriptUrl, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) });
       submit.textContent = '¡Enviado! ♡';
-      showFormMsg(thanks, 'ok');
+      showFormMsg(thanksFull, 'ok');
       form.reset();
+      toggleAttendFields();
     } catch {
       submit.disabled = false;
       submit.textContent = 'Confirmar';
@@ -304,7 +316,7 @@ form.addEventListener('submit', async e => {
       data.msg ? `Mensaje: ${data.msg}` : '',
     ].filter(Boolean);
     window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank');
-    showFormMsg(thanks, 'ok');
+    showFormMsg(thanksFull, 'ok');
     return;
   }
 

@@ -886,6 +886,12 @@ strong { font-weight: 700; color: var(--ink); }
 .rsvp-form select:focus,
 .rsvp-form textarea:focus { border-color: var(--rose); box-shadow: 0 0 0 4px rgba(212, 161, 167, .18); }
 .rsvp-form .btn { margin-top: 8px; align-self: center; }
+.attend-only { display: flex; flex-direction: column; gap: 14px; }
+.attend-only.is-hidden { display: none; }
+.rsvp-deadline { margin-top: 10px; font-size: 1.05rem; color: var(--muted); }
+.save-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 30px; }
+.save-actions .cal-btn-wrap { margin-top: 0; }
+.event-card .btn { margin-top: 18px; }
 .form-msg { min-height: 1.4em; text-align: center; font-weight: 600; }
 .form-msg.ok { color: #4F7A5A; }
 .form-msg.err { color: #9B2C2C; }
