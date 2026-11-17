@@ -5,10 +5,7 @@ const CONFIG = {
   // Fecha y horas del evento (hora de Colombia, UTC-5). Formato AAAA-MM-DD y HH:MM
   fecha: '2026-12-06',
   horaInicio: '14:00',   // Santa Misa
-  horaFin:    '21:00',   // fin aproximado para el calendario
-
-  // Lugar que aparece en el evento del calendario
-  lugar: 'Iglesia Reina de la Paz, El Carmen de Viboral, Antioquia',
+  horaFin:    '21:00',   // fin aproximado (la cuenta regresiva muestra «¡Hoy es el gran día!» hasta esta hora)
 
   // URL de la aplicación web de Google Apps Script (termina en /exec).
   // Las confirmaciones se guardan en la hoja de Google Sheets. Ver google-apps-script/Code.gs
@@ -118,61 +115,6 @@ function tick() {
 }
 tick();
 setInterval(tick, 1000);
-
-/* ── 3. CALENDARIO ─────────────────────────────────────────── */
-const utc = d => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-const EVT = {
-  title:    'Primera Comunión de Mariana',
-  location: CONFIG.lugar,
-  desc:     'Primera Comunión de Mariana. Santa Misa a las 2:00 p. m. en la Iglesia Reina de la Paz, El Carmen de Viboral. Celebración a las 5:00 p. m. en Casa Aurora, vereda Camargo, El Carmen de Viboral.',
-  start:    utc(EVENT_START),
-  end:      utc(EVENT_END),
-};
-
-function ics() {
-  return [
-    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Primera Comunion Mariana//ES', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
-    'BEGIN:VEVENT',
-    `UID:primera-comunion-mariana-${CONFIG.fecha}`,
-    `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0]}Z`,
-    `DTSTART:${EVT.start}`, `DTEND:${EVT.end}`,
-    `SUMMARY:${EVT.title}`, `LOCATION:${EVT.location}`, `DESCRIPTION:${EVT.desc}`,
-    'BEGIN:VALARM', 'TRIGGER:-P1D', 'ACTION:DISPLAY', 'DESCRIPTION:¡Mañana es la Primera Comunión de Mariana!', 'END:VALARM',
-    'END:VEVENT', 'END:VCALENDAR'
-  ].join('\r\n');
-}
-
-function dlICS() {
-  const a = Object.assign(document.createElement('a'), {
-    href: URL.createObjectURL(new Blob([ics()], { type: 'text/calendar' })),
-    download: 'primera-comunion-mariana.ics'
-  });
-  a.click();
-  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-}
-
-const calToggle = document.getElementById('cal-toggle');
-const calDD     = document.getElementById('cal-dropdown');
-const closeCal  = () => { calDD.classList.remove('open'); calToggle.setAttribute('aria-expanded', 'false'); };
-
-calToggle.addEventListener('click', e => {
-  e.stopPropagation();
-  calToggle.setAttribute('aria-expanded', calDD.classList.toggle('open'));
-});
-document.addEventListener('click', closeCal);
-
-document.getElementById('cal-google').addEventListener('click', () => {
-  window.open('https://calendar.google.com/calendar/render?' + new URLSearchParams({
-    action: 'TEMPLATE',
-    text: EVT.title,
-    dates: `${EVT.start}/${EVT.end}`,
-    location: EVT.location,
-    details: EVT.desc
-  }), '_blank');
-  closeCal();
-});
-document.getElementById('cal-apple').addEventListener('click',   () => { dlICS(); closeCal(); });
-document.getElementById('cal-outlook').addEventListener('click', () => { dlICS(); closeCal(); });
 
 /* ── 4. ÁLBUM — SUBIDA A GOOGLE DRIVE ──────────────────────── */
 if (CONFIG.appsScriptUrl && CONFIG.driveFolderId) {
