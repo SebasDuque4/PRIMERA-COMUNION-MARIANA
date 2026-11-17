@@ -700,17 +700,45 @@ strong { font-weight: 700; color: var(--ink); }
 .event-card .venue { margin-top: 10px; color: var(--muted); }
 .event-card .venue strong { font-size: 1.3rem; }
 .event-card .btn { margin-top: 4px; }
-.event-card .tbd {
+.event-card .event-time {
   display: inline-block;
-  margin: 14px 0 22px;
-  font-family: var(--f-caps);
-  padding: 6px 14px;
+  margin: 16px 0 6px;
+  padding: 7px 20px;
   border-radius: 999px;
   background: var(--blush-50);
-  font-size: .76rem;
+  border: 1px solid rgba(212, 161, 167, .5);
+  font-family: var(--f-caps);
+  font-size: 1.05rem;
   font-weight: 600;
-  letter-spacing: .16em;
+  letter-spacing: .08em;
   color: var(--rose-deep);
+}
+.save-times {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin: 22px 0 20px;
+  flex-wrap: wrap;
+}
+.save-times span {
+  flex: 1 1 0;
+  max-width: 190px;
+  padding: 12px 10px;
+  border-radius: 18px;
+  background: var(--blush-50);
+  border: 1px solid rgba(212, 161, 167, .45);
+  font-family: var(--f-caps);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--rose-deep);
+}
+.save-times small {
+  display: block;
+  margin-bottom: 2px;
+  font-size: .72rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
 }
 
 /* ── Galería ─────────────────────────────────────────────── */

@@ -2,8 +2,10 @@
    CONFIGURACIÓN · Edita solo este bloque
    ═══════════════════════════════════════════════════════════ */
 const CONFIG = {
-  // Fecha del evento (día completo, sin hora exacta). Formato AAAA-MM-DD
+  // Fecha y horas del evento (hora de Colombia, UTC-5). Formato AAAA-MM-DD y HH:MM
   fecha: '2026-12-06',
+  horaInicio: '14:00',   // Santa Misa
+  horaFin:    '21:00',   // fin aproximado para el calendario
 
   // Lugar que aparece en el evento del calendario
   lugar: 'Iglesia Reina de la Paz, El Carmen de Viboral, Antioquia',
@@ -89,10 +91,12 @@ pBtn.addEventListener('click', () => {
   if (playing) { audio.pause(); setPlaying(false); } else { tryPlay(); }
 });
 
-/* ── 2. CUENTA REGRESIVA (hasta el inicio del día) ─────────── */
+/* ── 2. CUENTA REGRESIVA (hasta la Santa Misa) ─────────────── */
+// Horas fijas de Colombia (UTC-5), para que sea correcta desde cualquier país
 const [Y, M, D] = CONFIG.fecha.split('-').map(Number);
-const EVENT_START = new Date(Y, M - 1, D, 0, 0, 0);
-const EVENT_END   = new Date(Y, M - 1, D + 1, 0, 0, 0);
+const colombia = hhmm => { const [h, m] = hhmm.split(':').map(Number); return new Date(Date.UTC(Y, M - 1, D, h + 5, m)); };
+const EVENT_START = colombia(CONFIG.horaInicio);
+const EVENT_END   = colombia(CONFIG.horaFin);
 const pad = n => String(n).padStart(2, '0');
 const grid = document.getElementById('countdown-grid');
 
@@ -115,23 +119,23 @@ function tick() {
 tick();
 setInterval(tick, 1000);
 
-/* ── 3. CALENDARIO (evento de día completo) ────────────────── */
-const ymd = d => `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`;
+/* ── 3. CALENDARIO ─────────────────────────────────────────── */
+const utc = d => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
 const EVT = {
   title:    'Primera Comunión de Mariana',
   location: CONFIG.lugar,
-  desc:     'Reserva todo el día para acompañar a Mariana en su Primera Comunión. Misa: Iglesia Reina de la Paz, El Carmen de Viboral. Celebración: Casa Aurora, vereda Camargo, El Carmen de Viboral. Te enviaremos los detalles por WhatsApp.',
-  start:    ymd(EVENT_START),
-  end:      ymd(EVENT_END),
+  desc:     'Primera Comunión de Mariana. Santa Misa a las 2:00 p. m. en la Iglesia Reina de la Paz, El Carmen de Viboral. Celebración a las 5:00 p. m. en Casa Aurora, vereda Camargo, El Carmen de Viboral.',
+  start:    utc(EVENT_START),
+  end:      utc(EVENT_END),
 };
 
 function ics() {
   return [
     'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Primera Comunion Mariana//ES', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
     'BEGIN:VEVENT',
-    `UID:primera-comunion-mariana-${EVT.start}`,
+    `UID:primera-comunion-mariana-${CONFIG.fecha}`,
     `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0]}Z`,
-    `DTSTART;VALUE=DATE:${EVT.start}`, `DTEND;VALUE=DATE:${EVT.end}`,
+    `DTSTART:${EVT.start}`, `DTEND:${EVT.end}`,
     `SUMMARY:${EVT.title}`, `LOCATION:${EVT.location}`, `DESCRIPTION:${EVT.desc}`,
     'BEGIN:VALARM', 'TRIGGER:-P1D', 'ACTION:DISPLAY', 'DESCRIPTION:¡Mañana es la Primera Comunión de Mariana!', 'END:VALARM',
     'END:VEVENT', 'END:VCALENDAR'
